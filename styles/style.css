@@ -1,0 +1,25 @@
+.sliders {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.sliders-col {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+.slider-1 {
+  width: 800px;
+  height: 600px;
+}
+
+.slider-2 {
+  width: 400px;
+  height: 300px;
+}
+
+.slider-3 {
+  width: 300px;
+  height: 200px;
+}
