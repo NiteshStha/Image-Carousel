@@ -71,6 +71,7 @@ class Slider {
         }
         break;
     }
+    this.index = this.x / this.width;
     this.#getDirection();
     // Restart the slider
     this.interval = setInterval(this.#start, this.fps);
@@ -83,6 +84,7 @@ class Slider {
 
     // + so that the id is always a number value
     this.x = +event.target.id * this.width;
+    this.index = this.x / this.width;
     this.#getDirection();
     // Restart the slider
     this.interval = setInterval(this.#start, this.fps);
