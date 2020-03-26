@@ -6,6 +6,6 @@ const sliderEle1 = document.getElementById('slider1');
 const sliderEle2 = document.getElementById('slider2');
 const sliderEle3 = document.getElementById('slider3');
 
-const slider = new Slider(sliderEle1.offsetWidth, sliderEle1.offsetHeight, urls1, sliderEle1);
+const slider1 = new Slider(sliderEle1.offsetWidth, sliderEle1.offsetHeight, urls1, sliderEle1);
 const slider2 = new Slider(sliderEle2.offsetWidth, sliderEle2.offsetHeight, urls2, sliderEle2);
 const slider3 = new Slider(sliderEle3.offsetWidth, sliderEle3.offsetHeight, urls3, sliderEle3);
