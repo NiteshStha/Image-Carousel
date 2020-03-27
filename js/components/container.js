@@ -5,10 +5,10 @@ class Container {
     this.urls = urls;
     this.div = div;
 
-    this.#init();
+    this.init();
   }
 
-  #init = () => {
+  init = () => {
     this.container = document.createElement('div');
     this.container.style.width = `${this.width}px`;
     this.container.style.height = `${this.height}px`;

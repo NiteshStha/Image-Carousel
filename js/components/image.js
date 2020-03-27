@@ -4,10 +4,10 @@ class Image {
     this.parent = parent;
     this.x = x;
 
-    this.#init();
+    this.init();
   }
 
-  #init = () => {
+  init = () => {
     this.img = document.createElement('img');
     this.img.src = this.url;
     this.img.alt = 'Slider Image';

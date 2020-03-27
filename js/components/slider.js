@@ -7,44 +7,45 @@ class Slider {
     this.x = 0;
     this.dx = -1;
     this.totalX = 0;
-    this.fps = 1000 / 120;
+    this.fps = 1000 / 360;
     this.index = 0;
-    this.#init();
+    this.init();
   }
 
-  #init = () => {
+  init = () => {
     this.container = new Container(this.width, this.height, this.urls, this.div);
     this.leftBtn = this.container.leftBtn;
     this.rightBtn = this.container.rightBtn;
-    this.leftBtn.addEventListener('click', this.#buttonEvent);
-    this.rightBtn.addEventListener('click', this.#buttonEvent);
+    this.leftBtn.addEventListener('click', this._buttonEvent);
+    this.rightBtn.addEventListener('click', this._buttonEvent);
     this.navBtns = this.container.navBtns;
-    this.navBtns.forEach(btn => btn.addEventListener('click', this.#navBtnEvent));
+    this.navBtns.forEach(btn => btn.addEventListener('click', this._navBtnEvent));
     this.images = this.urls.map(url => {
       const image = new Image(url, this.container.sliderDiv, this.totalX);
       this.totalX += this.width;
       return image;
     });
-    this.interval = setInterval(this.#start, this.fps);
+    this.interval = setInterval(this.start, this.fps);
   };
 
-  #start = () => {
-    this.#move();
+  start = () => {
+    this.move();
     this.container.draw(this.x);
   };
 
-  #move = async () => {
+  move = async () => {
     if (this.x % this.width === 0) {
-      const unpause = await this.#pause();
+      const unpause = await this._pause();
       this.index = this.x / this.width;
-      if (unpause) this.interval = setInterval(this.#start, this.fps);
+      if (unpause) this.interval = setInterval(this.start, this.fps);
     }
 
     this.x += this.dx;
-    this.#getDirection();
+    this._getDirection();
   };
 
-  #pause = () => {
+  // This is a private method
+  _pause = () => {
     clearInterval(this.interval);
     return new Promise(resolve => {
       this.timeout = setTimeout(() => {
@@ -53,7 +54,8 @@ class Slider {
     });
   };
 
-  #buttonEvent = event => {
+  // This is a private method
+  _buttonEvent = event => {
     // Stop all the intervals and timeouts
     clearTimeout(this.timeout);
     clearInterval(this.interval);
@@ -72,12 +74,13 @@ class Slider {
         break;
     }
     this.index = this.x / this.width;
-    this.#getDirection();
+    this._getDirection();
     // Restart the slider
-    this.interval = setInterval(this.#start, this.fps);
+    this.interval = setInterval(this.start, this.fps);
   };
 
-  #navBtnEvent = event => {
+  // This is a private method
+  _navBtnEvent = event => {
     // Stop all the intervals and timeouts
     clearTimeout(this.timeout);
     clearInterval(this.interval);
@@ -85,12 +88,13 @@ class Slider {
     // + so that the id is always a number value
     this.x = +event.target.id * this.width;
     this.index = this.x / this.width;
-    this.#getDirection();
+    this._getDirection();
     // Restart the slider
-    this.interval = setInterval(this.#start, this.fps);
+    this.interval = setInterval(this.start, this.fps);
   };
 
-  #getDirection = () => {
+  // This is a private method
+  _getDirection = () => {
     if (this.x <= -(this.totalX - this.width)) this.dx = 1;
     if (this.x >= 0) this.dx = -1;
   };
