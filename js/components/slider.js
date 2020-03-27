@@ -35,8 +35,8 @@ class Slider {
 
   move = async () => {
     if (this.x % this.width === 0) {
-      const unpause = await this._pause();
       this.index = this.x / this.width;
+      const unpause = await this._pause();
       if (unpause) this.interval = setInterval(this.start, this.fps);
     }
 
@@ -46,6 +46,7 @@ class Slider {
 
   // This is a private method
   _pause = () => {
+    this.container._changeBtnImage(this.index);
     clearInterval(this.interval);
     return new Promise(resolve => {
       this.timeout = setTimeout(() => {

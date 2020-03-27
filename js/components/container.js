@@ -80,4 +80,11 @@ class Container {
   draw = x => {
     this.sliderDiv.style.marginLeft = `${x}px`;
   };
+
+  _changeBtnImage = index => {
+    this.navBtns.forEach(btn => {
+      if (index === +btn.id) btn.src = './assets/slider/dotdark.png';
+      else btn.src = './assets/slider/dot.png';
+    });
+  };
 }
