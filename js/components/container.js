@@ -30,7 +30,7 @@ class Container {
     this.container.appendChild(this.sliderDiv);
 
     this.leftBtn = document.createElement('img');
-    this.leftBtn.src = './assets/slider/left.png';
+    this.leftBtn.src = LEFT_BTN;
     this.leftBtn.id = 'leftBtn';
     this.leftBtn.alt = 'Slider Button';
     this.leftBtn.style.position = 'absolute';
@@ -42,7 +42,7 @@ class Container {
     this.container.appendChild(this.leftBtn);
 
     this.rightBtn = document.createElement('img');
-    this.rightBtn.src = './assets/slider/right.png';
+    this.rightBtn.src = RIGHT_BTN;
     this.rightBtn.id = 'rightBtn';
     this.rightBtn.alt = 'Slider Button';
     this.rightBtn.style.position = 'absolute';
@@ -62,7 +62,7 @@ class Container {
 
     this.navBtns = this.urls.map((url, index) => {
       const btn = document.createElement('img');
-      btn.src = './assets/slider/dot.png';
+      btn.src = NAVIGATION_DOT;
       btn.alt = 'Slider Button';
       btn.style.width = '12%';
       btn.style.cursor = 'pointer';
@@ -83,8 +83,8 @@ class Container {
 
   _changeBtnImage = index => {
     this.navBtns.forEach(btn => {
-      if (index === +btn.id) btn.src = './assets/slider/dotdark.png';
-      else btn.src = './assets/slider/dot.png';
+      if (index === +btn.id) btn.src = NAVIGATION_DOT_DARK;
+      else btn.src = NAVIGATION_DOT;
     });
   };
 }
